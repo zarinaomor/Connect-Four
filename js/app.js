@@ -12,6 +12,6 @@ function updateMatches(value, matches) {
 
   const table = document.querySelector('table');
   table.addEventListener('click', function(e){
-    let column = e.target.cell;
-    console.log('clicked');
+    let column = e.target.cellIndex;
+    // console.log('clicked');
   })
