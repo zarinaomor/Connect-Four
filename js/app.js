@@ -14,4 +14,21 @@ function updateMatches(value, matches) {
   table.addEventListener('click', function(e){
     let column = e.target.cellIndex;
     // console.log('clicked');
+    if(gameOver || typeof column === "undefined") {
+        return;
+        // console.log('click')
+    }
+    let i;
+    let row;
+    for (let i=rows-1; i>=0; i--) {
+        if(typeof grid[i][column] === "undefined") {
+            row = i;
+            break
+            // console.log('hi')
+        }
+    }
+    if(typeof row === "undefined") {
+        return
+        
+    }
   })
