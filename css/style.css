@@ -1,0 +1,13 @@
+table {
+    border: 1px solid black;
+    background-color: #0004ff;
+  }
+  
+  table td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    background-color: #fff;
+    text-align: center;
+  }
