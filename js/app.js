@@ -1,3 +1,4 @@
+
 const columns = 7;
 const rows = 6;
 const matchToWin = 4;
@@ -56,7 +57,7 @@ function updateMatches(value, matches) {
             console.log('Winner')
         }
 
-        table.rows[row].cells[column].style.backgroundColor = playerTurn ? "red" : "yellow"
+        table.rows[row].cells[column].style.backgroundColor = playerTurn ? "yellow" : "red"
 
         playerTurn = playerTurn ? 0 : 1
 
