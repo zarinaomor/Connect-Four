@@ -2,9 +2,9 @@ const columns = 7;
 const rows = 6;
 const matchToWin = 4;
 
-const playerTurn = 0;
-const grid = [[], [], [], [], [], []];
-const gameOver = false;
+let playerTurn = 0;
+let grid = [[], [], [], [], [], []];
+let gameOver = false;
 
 function updateMatches(value, matches) {
     return value === playerTurn ? (matches || 0) + 1 : 0
@@ -39,7 +39,26 @@ function updateMatches(value, matches) {
     let checkDiagonal2;
     for(let i=0; i<columns; i++) {
         checkHorizontal = updateMatches(grid[row][i], checkHorizontal)
+        if(i < rows) {
+            checkVertical = updateMatches(grid[i][column], checkVertical);
+            checkDiagonal1 = updateMatches(grid[i][column + row - i], checkDiagonal1)
+            checkDiagonal2 = updateMatches(grid[i][column - row + i], checkDiagonal1)
+        }
+
+        // Check win
+        if (checkHorizontal >= matchToWin || checkVertical >= matchToWin
+        || checkDiagonal1 >= matchToWin || checkDiagonal2 >= matchToWin) {
+            gameOver = true;
+        }
     }
+
+        if (gameOver) {
+            console.log('Winner')
+        }
+
+        table.rows[row].cells[column].style.backgroundColor = playerTurn ? "red" : "yellow"
+
+        playerTurn = playerTurn ? 0 : 1
 
   })
 
