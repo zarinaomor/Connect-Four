@@ -9,7 +9,18 @@ let gameOver = false;
 
 function updateMatches(value, matches) {
     return value === playerTurn ? (matches || 0) + 1 : 0
+ 
+      
   }
+
+//   if (v === 0)
+// {
+//   v = 1;
+// }
+// else
+// {
+//   v = 0;
+// }
 
  
   const table = document.querySelector('table');
@@ -33,11 +44,26 @@ function updateMatches(value, matches) {
         return
         
     }
+//  update board
+    table.rows[row].cells[column].style.backgroundColor = playerTurn ? "#fff200" : "#ff3838";
+
+    // switch turns
+    if(playerTurn === 0) {
+        playerTurn = 1;
+    } else {
+        playerTurn = 0;
+    }
+
+    // track of players move
     grid[row][column] = playerTurn;
+
+    // check matches
     let checkHorizontal;
     let checkVertical;
     let checkDiagonal1;
     let checkDiagonal2;
+
+
     for(let i=0; i<columns; i++) {
         checkHorizontal = updateMatches(grid[row][i], checkHorizontal)
         if(i < rows) {
@@ -47,8 +73,10 @@ function updateMatches(value, matches) {
         }
 
         // Check win
-        if (checkHorizontal >= matchToWin || checkVertical >= matchToWin
-        || checkDiagonal1 >= matchToWin || checkDiagonal2 >= matchToWin) {
+        if (checkHorizontal >= matchToWin
+         || checkVertical >= matchToWin
+         || checkDiagonal1 >= matchToWin 
+         || checkDiagonal2 >= matchToWin) {
             gameOver = true;
         }
     }
@@ -56,11 +84,8 @@ function updateMatches(value, matches) {
         if (gameOver) {
             console.log('Winner')
         }
-
-        table.rows[row].cells[column].style.backgroundColor = playerTurn ? "yellow" : "red"
-
-        playerTurn = playerTurn ? 0 : 1
-
+    
+        
   })
 
   
