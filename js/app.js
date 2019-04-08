@@ -45,7 +45,14 @@ function updateMatches(value, matches) {
         
     }
 //  update board
-    table.rows[row].cells[column].style.backgroundColor = playerTurn ? "#fff200" : "#ff3838";
+    if (playerTurn) {
+        result = "#fff200"
+    table.rows[row].cells[column].style.backgroundColor = result;
+    } else {
+        result = "#ff3838"
+    table.rows[row].cells[column].style.backgroundColor = result;
+    }
+  
 
     // switch turns
     if(playerTurn === 0) {
@@ -69,7 +76,7 @@ function updateMatches(value, matches) {
         if(i < rows) {
             checkVertical = updateMatches(grid[i][column], checkVertical);
             checkDiagonal1 = updateMatches(grid[i][column + row - i], checkDiagonal1)
-            checkDiagonal2 = updateMatches(grid[i][column - row + i], checkDiagonal1)
+            checkDiagonal2 = updateMatches(grid[i][column - row + i], checkDiagonal2)
         }
 
         // Check win
