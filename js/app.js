@@ -26,11 +26,13 @@ function updateMatches(value, matches) {
   const reset = document.querySelector('button');
   const winner = document.querySelector('h4');
   const td = document.querySelectorAll('td')
+  
 
   reset.addEventListener('click', () => {
       td.forEach(slot => slot.style.backgroundColor = 'white')
       grid = [[], [], [], [], [], []];
     //   reset.style.visibility = "hidden";
+      winner.innerText = '';
       gameOver = false;
   })
 
@@ -41,7 +43,6 @@ function updateMatches(value, matches) {
     // console.log('clicked');
     if(gameOver || typeof column === "undefined") {
         return;
-        // console.log('click')
     }
     let i;
     let row;
@@ -49,20 +50,19 @@ function updateMatches(value, matches) {
         if(typeof grid[i][column] === "undefined") {
             row = i;
             break;
-            // console.log('cilcked')
         }
     }
     if(typeof row === "undefined") {
         return;
         
     }
+    
     //update board
-
     if (playerTurn) {
-        result = "red";
+        result = "yellow";
     table.rows[row].cells[column].style.backgroundColor = result;
     } else {
-        result = "yellow";
+        result = "red";
     table.rows[row].cells[column].style.backgroundColor = result;
     }
   
@@ -112,7 +112,8 @@ function updateMatches(value, matches) {
         if (gameOver) {
             console.log('Winner!!!!!!');
             // reset.style.visibility = "visible";
+           
         }    
   });
 
-
+  
